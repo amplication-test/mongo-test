@@ -1,5 +1,6 @@
 {
-  "name": "@sample-service/server",
+  "name": "server-template",
+  "version": "0.16.1",
   "private": true,
   "scripts": {
     "start": "nest start",
@@ -8,11 +9,11 @@
     "build": "nest build",
     "test": "jest",
     "seed": "ts-node scripts/seed.ts",
-    "db:migrate-save": "prisma migrate dev",
-    "db:migrate-up": "prisma migrate deploy",
     "db:clean": "ts-node scripts/clean.ts",
-    "db:init": "run-s \"db:migrate-save -- --name 'initial version'\" db:migrate-up seed",
     "prisma:generate": "prisma generate",
+    "prisma:init": "prisma init",
+    "prisma:pull": "prisma db pull",
+    "prisma:push": " prisma db push",
     "docker:db": "docker-compose -f docker-compose.db.yml up -d",
     "docker:build": "docker build .",
     "compose:up": "docker-compose up -d",
@@ -44,9 +45,7 @@
     "passport-jwt": "4.0.0",
     "reflect-metadata": "0.1.13",
     "swagger-ui-express": "4.3.0",
-    "ts-node": "9.1.1",
-    "@nestjs/microservices": "8.2.3",
-    "kafkajs": "2.2.0"
+    "ts-node": "9.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "8.2.5",
