@@ -1,5 +1,5 @@
-datasource postgres {
-  provider = "postgresql"
+datasource mongo {
+  provider = "mongodb"
   url      = env("DB_URL")
 }
 
@@ -8,8 +8,8 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @mongo.ObjectId
+  createdAt DateTime
   updatedAt DateTime @updatedAt
   firstName String?
   lastName  String?
@@ -19,8 +19,8 @@ model User {
 }
 
 model Order {
-  id         String    @id @default(cuid())
-  createdAt  DateTime  @default(now())
+  id         String    @id @default(auto()) @map("_id") @mongo.ObjectId
+  createdAt  DateTime
   updatedAt  DateTime  @updatedAt
   quantity   Int?
   discount   Float?
@@ -32,8 +32,8 @@ model Order {
 }
 
 model Customer {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @mongo.ObjectId
+  createdAt DateTime
   updatedAt DateTime @updatedAt
   firstName String?
   lastName  String?
@@ -45,8 +45,8 @@ model Customer {
 }
 
 model Address {
-  id        String     @id @default(cuid())
-  createdAt DateTime   @default(now())
+  id        String     @id @default(auto()) @map("_id") @mongo.ObjectId
+  createdAt DateTime
   updatedAt DateTime   @updatedAt
   address_1 String?
   address_2 String?
@@ -57,8 +57,8 @@ model Address {
 }
 
 model Product {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
+  id          String   @id @default(auto()) @map("_id") @mongo.ObjectId
+  createdAt   DateTime
   updatedAt   DateTime @updatedAt
   name        String?
   itemPrice   Float?
